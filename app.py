@@ -20,8 +20,8 @@ def load_dashboard_data():
     geojson_dict = json.loads(gdf.to_json())
     
     # --- UPDATED: LOAD CHUNKS AND CONCATENATE ---
-    df_part1 = pd.read_parquet("C:/Research Work/Projects/MetaAir2/Data/Childs_2022/10km grid/Exported_Results/split/ca_smoke_pm25_part1.parquet")
-    df_part2 = pd.read_parquet("C:/Research Work/Projects/MetaAir2/Data/Childs_2022/10km grid/Exported_Results/split/ca_smoke_pm25_part2.parquet")
+    df_part1 = pd.read_parquet("ca_smoke_pm25_part1.parquet")
+    df_part2 = pd.read_parquet("ca_smoke_pm25_part2.parquet")
     df = pd.concat([df_part1, df_part2], ignore_index=True)
     
     df['grid_id_10km'] = df['grid_id_10km'].astype(int).astype(str).str.strip()
