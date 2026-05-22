@@ -72,15 +72,16 @@ with col_left:
             height=700,  # <-- ADD THIS LINE HERE TO INCREASE THE SIZE
         )
         
-        # Style polygons to maximize layout coverage and eliminate white boundary lines
+       # Style polygons to maximize layout coverage and eliminate white boundary lines
         fig_map.update_traces(marker=dict(line_width=0, opacity=0.8))
         fig_map.update_layout(
             margin={"r":0,"t":0,"l":0,"b":0}, 
             map_style="carto-positron"
         )
         
-        # Keep playback controls responsive and smooth
-        fig_map.layout.updatemenus[0].buttons[0].args[1]["frame"]["duration"] = 800
+        # FIX: Slower frame duration + smooth easing transition stops the legend from flashing/jittering
+        fig_map.layout.updatemenus[0].buttons[0].args[1]["frame"]["duration"] = 1200
+        fig_map.layout.updatemenus[0].buttons[0].args[1]["transition"] = {"duration": 300, "easing": "cubic-in-out"}
         
         map_selection = st.plotly_chart(fig_map, use_container_width=True, on_select="rerun")
 
