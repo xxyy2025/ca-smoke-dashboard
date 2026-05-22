@@ -12,7 +12,7 @@ st.title("California Daily PM2.5 Smoke Dashboard (2006-2020)")
 @st.cache_data
 def load_dashboard_data():
     # Read spatial elements
-    gdf = gpd.read_file("C:/Research Work/Projects/MetaAir2/Data/Childs_2022/10km grid/Exported_Results/ca_grid_10km.geojson")
+    gdf = gpd.read_file("ca_grid_10km.geojson")
     gdf['ID'] = gdf['ID'].astype(int).astype(str).str.strip()
     
     # Optional Speed Optimization: simplifies shapes for faster web loading
